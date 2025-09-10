@@ -1,8 +1,4 @@
 import vtk
-import numpy as np
-from vtk.util.numpy_support import vtk_to_numpy, numpy_to_vtk
-import os
-from glob import glob
 import argparse
 from utilities import *
 class ImageAnalysisProjectImageToMesh():
@@ -21,7 +17,9 @@ class ImageAnalysisProjectImageToMesh():
 		elif self.Args.InputFileName1[-4:]==".vtu":
 			SourceData=ReadVTUFile(self.Args.InputFileName1)     
 		elif self.Args.InputFileName1[-4:]==".vtp":
-			SourceData=ReadVTPFile(self.Args.InputFileName1) 
+			SourceData=ReadVTPFile(self.Args.InputFileName1)
+		elif self.Args.InputFileName1[-4:]==".vtk":
+			SourceData=ReadVTKFile(self.Args.InputFileName1)
 		else:
 			print ("Input file format not detected. Exiting...")
 			exit(1)
